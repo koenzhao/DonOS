@@ -17,10 +17,10 @@
 
 typedef struct _DOS_Mutex_t
 {
-	Event_t  event;
-	uint32_t lockedCount;
-	Task_t*  owner;
-	uint32_t ownerOriginalPrio;
+	Event_t        event;
+	uint32_t       lockedCount;
+	Task_t*        owner;
+	TaskPriority_t ownerOriginalPrio;
 } Mutex_t;
 
 typedef enum

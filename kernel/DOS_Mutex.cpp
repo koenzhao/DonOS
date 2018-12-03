@@ -22,6 +22,8 @@ Mutex_Return_t DOS_Mutex_Init(Mutex_t* mutex)
 	mutex->lockedCount       = 0;
 	mutex->owner             = (Task_t*)0;
 	mutex->ownerOriginalPrio = TASK_PRIORITY;
+
+	return MUTEX_SUCCESS;
 }
 
 Mutex_Return_t DOS_Mutex_Wait(Mutex_t* mutex, uint32_t waitTick)
@@ -48,7 +50,7 @@ Mutex_Return_t DOS_Mutex_Wait(Mutex_t* mutex, uint32_t waitTick)
 		{
 			mutex->lockedCount++;
 
-			DOS_EnableIrq():
+			DOS_EnableIrq();
 			return MUTEX_SUCCESS;
 		}
 		else // Other task wait for this mutex 
@@ -76,7 +78,7 @@ Mutex_Return_t DOS_Mutex_Wait(Mutex_t* mutex, uint32_t waitTick)
 			DOS_Event_Wait(&mutex->event, (void *)0, waitTick);
 			DOS_EnableIrq();
 			DOS_TaskSchedule();
-			return g_currentTask->waitEventResult;
+			return (Mutex_Return_t)g_currentTask->waitEventResult;
 		}
 	}
 }

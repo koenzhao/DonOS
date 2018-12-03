@@ -36,6 +36,12 @@ void DOS_BlockDelay(int32_t count)
  *******************************************/
 void DOS_Delay(uint32_t ms)
 {
+	//ms is 0
+	if(ms == 0)
+	{
+		return ;
+	}
+
 	g_currentTask->delay = ms/10;
 	DOS_Task_DelayTask(g_currentTask);	
 	DOS_TaskSchedule();

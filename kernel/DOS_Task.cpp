@@ -306,7 +306,7 @@ static void DOS_Ready_AddTaskToList(Task_t* pTask)
  * Return: 
  * Author: Koen
  *******************************************/
-static void DOS_Ready_DeleteTaskFromList(Task_t* pTask)
+void DOS_Ready_DeleteTaskFromList(Task_t* pTask)
 {
 	if(pTask == NULL)
 	{

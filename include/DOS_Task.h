@@ -74,7 +74,7 @@ extern uint32_t        taskSum;
 extern List_t*     g_ReadyTaskList[TASK_PRIORITY];
 
 static void        DOS_Ready_AddTaskToList(Task_t* pTask);
-static void        DOS_Ready_DeleteTaskFromList(Task_t* pTask);
+void        DOS_Ready_DeleteTaskFromList(Task_t* pTask);
 
 
 extern void        DOS_CreateTask(Task_t* task, 
